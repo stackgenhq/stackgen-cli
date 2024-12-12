@@ -2,45 +2,14 @@
 name: 'AppCD: Generative IAC'
 description: 'Generate IAC from the code'
 inputs:
-  cloud:
-    description: 'Cloud provider'
-    required: false
-    default: 'aws'
-  language:
-    description: 'Programming language: Supports Java/Python'
-    required: false
-    default: 'Python'
-  outputDir:
-    description: 'Output directory'
-    required: false
-    default: './iac'
-  scanPath:
-    description: 'Path to scan'
-    required: false
-    default: '.'
-  targetCompute:
-    description: 'Target compute'
-    required: false
-    default: 'k8s'
-  enableDebug:
-    description: 'Enable debug, Set to true for debug logs, Better if combined with ACTIONS_RUNNER_DEBUG'
-    required: false
-    default: 'false'
+  cmd:
+    description: 'Command to run'
+    required: true
+outputs:
+  result:
+    description: "The result from the command"
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - generate 
-    - --lang 
-    - ${{ inputs.language }}
-    - --cloud
-    - ${{ inputs.cloud }}
-    - --output
-    - ${{ inputs.outputDir }}
-    - --scanpath
-    - ${{ inputs.scanPath }}
-    - --deployment-type
-    - ${{ inputs.targetCompute }}
-    - --log
-    # based on ACTIONS_RUNNER_DEBUG, set to 2 for debug
-    - ${{ inputs.enableDebug == 'true' && '2' || '3' }}
+    - ${{ inputs.cmd }}
