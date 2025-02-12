@@ -1,5 +1,5 @@
 # action.yml
-name: 'AppCD: Generative IAC'
+name: 'StackGen: Generative IAC'
 description: 'Generate IAC from the code'
 inputs:
   cmd:
