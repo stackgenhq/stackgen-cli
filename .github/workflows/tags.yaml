@@ -17,8 +17,8 @@ jobs:
         VERSION=${GITHUB_REF#refs/tags/}
         MAJOR=${VERSION%%.*}
         MAJOR_MINOR=${VERSION%.*}
-        git config --global user.name 'appcd-bot'
-        git config --global user.email 'appcd-bot@users.noreply.github.com'
+        git config --global user.name 'stackgen-bot'
+        git config --global user.email 'stackgen-bot@users.noreply.github.com'
         git tag -fa "${MAJOR}" -m 'Update major version tag'
         git tag -fa "${MAJOR_MINOR}" -m 'Update minor version tag'
         git push origin "${MAJOR}" --force
